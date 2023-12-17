@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+// 商品
+// Route::prefix('items')->group(['as' => 'items.'], function () {
+//     // 新規作成画面
+//     Route::get('/create', [ItemController::class, 'create'])->name('create');
+// })->middleware('auth');
