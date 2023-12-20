@@ -1,0 +1,93 @@
+@import "_basic";
+@import "_mixin";
+
+/* ルートページ */
+.root {
+  &-btns {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    &__btn {
+      font-size: 1.4rem;
+      font-weight: bold;
+      @include set-border(1px, solid, #333);
+      @include centering;
+      width: 81px;
+      height: 40px;
+      &.login {
+        &:hover {
+          background-color: #e3e7ea;
+        }
+      }
+      &.register {
+        background-color: #333;
+        color: #fff;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+/* 新規登録＆ログイン画面 */
+.auth {
+  width: min(100%, 500px);
+  margin: 50px auto 0;
+  &__logo {
+    width: min(100%, 300px);
+    margin: 0 auto;
+  }
+  &-form {
+    margin-top: 15px;
+    &__item {
+      margin-top: 5px;
+    }
+    .auth-form__item {
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+    &__input {
+      width: 100%;
+      height: 60px;
+      font-size: 1.6rem;
+      padding: 0 1em;
+      &::placeholder {
+        font-weight: bold;
+      }
+    }
+    &__submit {
+      background-color: #a435f0;
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border: none;
+      height: 48px;
+      cursor: pointer;
+      width: 100%;
+      &:hover {
+        background-color: #8710d8;
+      }
+    }
+    &__err {
+      font-size: 1.2rem;
+      font-weight: bold;
+      li {
+        color: #ff4000;
+      }
+    }
+    &__link {
+      font-size: 1.4rem;
+      width: fit-content;
+      margin: 20px auto 0;
+      &.no-margin {
+        margin: 0 auto;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
