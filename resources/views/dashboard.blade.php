@@ -3,14 +3,8 @@
     ダッシュボード
   </x-slot>
 
-  <form method="POST" action="{{ route('logout') }}">
-    @csrf
-
-    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-    this.closest('form').submit();">
-      {{ __("Log Out") }}
-    </x-dropdown-link>
-  </form>
+  <!-- header -->
+  @include('partial._header')
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -19,6 +13,29 @@
           {{ __("You're logged in!") }}
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="dsbd-menus flex">
+    <div class="dsbd-menus__item">
+      <h2>顧客一覧</h2>
+      <ul>
+        <li>test</li>
+        <li>test</li>
+        <li>test</li>
+      </ul>
+    </div>
+    <div class="dsbd-menus__item">
+      <h2>商品一覧</h2>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <div class="dsbd-menus__item">
+      <h2>購入履歴</h2>
+      <ul>
+        <li></li>
+      </ul>
     </div>
   </div>
 </x-app>
