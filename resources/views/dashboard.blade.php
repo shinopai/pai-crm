@@ -19,16 +19,20 @@
   <div class="dsbd-menus flex">
     <div class="dsbd-menus__item">
       <h2>顧客一覧</h2>
-      <ul>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-      </ul>
     </div>
     <div class="dsbd-menus__item">
       <h2>商品一覧</h2>
       <ul>
-        <li></li>
+        @if($items->isNotEmpty())
+        @foreach ($items as $item)
+        <li>{{ $item->name }}</li>
+        @endforeach
+        <li>
+          <a href="">一覧ページへ</a>
+        </li>
+        @else
+        <li>顧客はありません</li>
+        @endisset
       </ul>
     </div>
     <div class="dsbd-menus__item">

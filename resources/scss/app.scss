@@ -130,6 +130,15 @@
     }
     ul {
       font-size: 16px;
+      li {
+        &:last-child {
+          margin-top: 5px;
+        }
+        a {
+          width: fit-content;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
