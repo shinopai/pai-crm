@@ -1,4 +1,4 @@
-<x-app>
+<x-welcome>
   <!-- ページタイトル -->
   <x-slot name="title">ウエルカムページ</x-slot>
 
@@ -12,4 +12,4 @@
     <a href="{{ route('register') }}" class="root-btns__btn register">新規登録</a>
     @endif
   </div>
-</x-app>
+</x-welcome>

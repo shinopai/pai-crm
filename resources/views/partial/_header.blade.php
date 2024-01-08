@@ -1,12 +1,14 @@
 <header class="header">
   <div class="container">
     <div class="header__inner flex">
-      <h1>
-        <img src="{{ asset('img/logo01.webp') }}" alt="顧客管理システム">
-      </h1>
+      <a href="{{ route('dashboard') }}">
+        <h1>
+          <img src="{{ asset('img/logo01.webp') }}" alt="顧客管理システム">
+        </h1>
+      </a>
       <nav class="flex">
         <a href="">顧客一覧</a>
-        <a href="">商品一覧</a>
+        <a href="{{ route('items.index') }}">商品一覧</a>
         <a href="">購入履歴</a>
         <span>
           {{ Auth::user()->name }}

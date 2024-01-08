@@ -17,6 +17,9 @@
 </head>
 
 <body>
+  <!-- header -->
+  @include('partial._header')
+
   <main>
     <div class="container">
       {{ $slot }}

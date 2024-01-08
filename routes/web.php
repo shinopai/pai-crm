@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // 商品
-// Route::prefix('items')->group(['as' => 'items.'], function () {
-//     // 新規作成画面
-//     Route::get('/create', [ItemController::class, 'create'])->name('create');
-// })->middleware('auth');
+Route::prefix('items')->name('items.')->group(function () {
+    // 一覧画面
+    Route::get('/', [ItemController::class, 'index'])->name('index');
+
+    // 新規作成画面
+    Route::get('/create', [ItemController::class, 'create'])->name('create');
+})->middleware('auth');
