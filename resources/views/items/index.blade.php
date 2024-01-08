@@ -22,5 +22,5 @@
     <p>商品はありません</p>
     @endif
   </div>
-  {{ $items->links() }}
+  {{ $items->links('vendor.pagination.default') }}
 </x-app>

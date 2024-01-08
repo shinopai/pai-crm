@@ -165,3 +165,22 @@
     }
   }
 }
+
+/* ページネーション */
+.pagination {
+  width: min(100%, 1000px);
+  margin: 30px auto;
+  justify-content: center;
+  font-size: 14px;
+  column-gap: 15px;
+  li {
+    border: 1px solid #b0c4df;
+    padding: 0.1em 0.5em;
+    &.active {
+      background-color: #b0c4df;
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
