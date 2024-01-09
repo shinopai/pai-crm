@@ -1,6 +1,8 @@
 <x-app>
   <x-slot name="title">商品一覧</x-slot>
 
+  <div id="crm_app"></div>
+
   <div class="table-wrap">
     @if ($items->isNotEmpty())
     <table class="table">
