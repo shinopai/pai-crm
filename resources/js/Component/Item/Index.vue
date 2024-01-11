@@ -12,7 +12,7 @@
         <td>{{ item.name }}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.status }}</td>
-        <td>{{ item.created_at }}</td>
+        <td>{{ dayjs(item.created_at).format('YYYY年M月DD日') }}</td>
       </tr>
     </table>
     <p v-else>商品はありません</p>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, inject } from 'vue'
   import axios from 'axios';
 
   export default{
@@ -35,6 +35,7 @@
 
   const items = ref()
   const pageLinks = ref()
+  const dayjs = inject('dayjs')
   let isItemsExists = ref(false)
 
   // 全ての商品情報を取得
@@ -67,7 +68,8 @@
     checkIsItemsExists,
     isItemsExists,
     items,
-    pageLinks
+    pageLinks,
+    dayjs
   }
 }
   }
