@@ -9,8 +9,8 @@ Alpine.start();
 // vue setting
 import { createApp } from "vue";
 
-import App from "./Component/App.vue";
+import App from "./Component/Item/Index.vue";
 
 const app = createApp(App);
 
-app.mount("#crm_app");
+app.mount("#crm_item");

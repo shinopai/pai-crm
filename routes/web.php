@@ -34,7 +34,4 @@ require __DIR__ . '/auth.php';
 Route::prefix('items')->name('items.')->group(function () {
     // 一覧画面
     Route::get('/', [ItemController::class, 'index'])->name('index');
-
-    // 新規作成画面
-    Route::get('/create', [ItemController::class, 'create'])->name('create');
 })->middleware('auth');

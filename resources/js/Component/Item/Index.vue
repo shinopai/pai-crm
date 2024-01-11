@@ -1,0 +1,74 @@
+<template>
+    <div class="table-wrap">
+    <table class="table" v-if="isItemsExists">
+      <caption>商品一覧 </caption>
+      <tr>
+        <td class="heading">商品名</td>
+        <td class="heading">値段</td>
+        <td class="heading">状態</td>
+        <td class="heading">登録日</td>
+      </tr>
+      <tr v-for="item in items" :key="item">
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.created_at }}</td>
+      </tr>
+    </table>
+    <p v-else>商品はありません</p>
+    <nav>
+    <ul class="pagination flex" v-if="isItemsExists">
+      <li v-for="link in pageLinks" :key="link" :class="{ 'active' : link.active }">
+        <a :href="link.url">{{ link.label }}</a>
+      </li>
+    </ul>
+  </nav>
+  </div>
+</template>
+
+<script>
+  import { ref, onMounted } from 'vue'
+  import axios from 'axios';
+
+  export default{
+  setup(){
+
+  const items = ref()
+  const pageLinks = ref()
+  let isItemsExists = ref(false)
+
+  // 全ての商品情報を取得
+  const getAllItems = async () => {
+    await axios.get('/api/items/')
+          .then(res => {
+            items.value = res.data.items.data
+            pageLinks.value = res.data.items.links
+            console.log(pageLinks.value)
+          })
+          .catch(e => {
+            console.log(e.response.data.message)
+          })
+  }
+
+  // 商品が1つ以上存在しているかチェック
+  const checkIsItemsExists = () => {
+    if(items._value.length > 1){
+      return true
+    }
+  }
+
+  onMounted(async () => {
+    await getAllItems()
+    isItemsExists.value = await checkIsItemsExists()
+  })
+
+  return {
+    getAllItems,
+    checkIsItemsExists,
+    isItemsExists,
+    items,
+    pageLinks
+  }
+}
+  }
+</script>
