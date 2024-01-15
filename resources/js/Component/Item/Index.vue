@@ -1,7 +1,7 @@
 <template>
     <div class="table-wrap">
     <table class="table" v-if="isItemsExists">
-      <caption>商品一覧 </caption>
+      <caption>商品一覧</caption>
       <tr>
         <td class="heading">商品名</td>
         <td class="heading">値段</td>
@@ -10,7 +10,7 @@
       </tr>
       <tr v-for="item in items" :key="item">
         <td>{{ item.name }}</td>
-        <td>{{ item.price }}</td>
+        <td>{{ item.price.toLocaleString() }}</td>
         <td>{{ item.status }}</td>
         <td>{{ dayjs(item.created_at).format('YYYY年M月DD日') }}</td>
       </tr>

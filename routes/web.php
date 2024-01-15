@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\ItemController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -17,7 +16,6 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/dashboard', [DashBoardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,10 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-
 // 商品
 Route::prefix('items')->name('items.')->group(function () {
     // 一覧画面
-    Route::get('/', [ItemController::class, 'index'])->name('index');
+    Route::get('/', function () {
+        return view('items.index');
+    })->name('index');
+    // 一覧画面以外
+    Route::get('/{any}', function () {
+        return view('items.index');
+    })->where('any', '.*');
 })->middleware('auth');
+
+require __DIR__ . '/auth.php';
