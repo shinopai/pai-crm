@@ -12,15 +12,17 @@ import { createApp } from "vue";
 import dayjs from "dayjs";
 // ロケールのインポート
 import "dayjs/locale/ja";
+// routerのインポート
+import router from "./router";
 
 // ロケール設定
 dayjs.locale("ja");
 
-import App from "./Component/Item/Index.vue";
+import App from "./Component/App.vue";
 
 const app = createApp(App);
 
 // dayjsをprovideに設定する
 app.provide("dayjs", dayjs);
 
-app.mount("#crm_item");
+app.use(router).mount("#crm_item");
