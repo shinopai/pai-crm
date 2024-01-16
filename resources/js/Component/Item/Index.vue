@@ -1,7 +1,10 @@
 <template>
     <div class="table-wrap">
+      <div class="table__header flex">
+        <h2>商品一覧</h2>
+        <RouterLink to="/create">商品登録</RouterLink>
+      </div>
     <table class="table" v-if="isItemsExists">
-      <caption>商品一覧</caption>
       <tr>
         <td class="heading">商品名</td>
         <td class="heading">値段</td>

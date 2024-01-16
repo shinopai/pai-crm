@@ -150,12 +150,19 @@
     width: min(100%, 1000px);
     margin: 50px auto 0;
   }
-  caption {
+  &__header {
     font-size: 20px;
-    text-align: left;
+    justify-content: space-between;
     font-weight: bold;
-    p {
-      font-size: 0.7em;
+    margin-bottom: 5px;
+    a {
+      background-color: #a435f0;
+      color: #fff;
+      width: 120px;
+      text-align: center;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   td {

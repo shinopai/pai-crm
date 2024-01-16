@@ -25,7 +25,7 @@
         <li>{{ $item->name }}</li>
         @endforeach
         <li>
-          <a href="{{ route('items.index', 'any') }}">一覧ページへ</a>
+          <a href="{{ route('items.index') }}">一覧ページへ</a>
         </li>
         @else
         <li>顧客はありません</li>
