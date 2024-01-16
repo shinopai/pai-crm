@@ -23,7 +23,8 @@ class ItemRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'price' => 'required|numeric|between:300,9999'
+            'price' => 'required|numeric|between:300,9999',
+            'status' => 'required'
         ];
     }
 }

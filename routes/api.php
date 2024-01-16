@@ -19,5 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// 全商品情報取得
-Route::get('/items', [ItemController::class, 'index']);
+// 商品
+Route::prefix('items')->group(function () {
+    // 全商品情報取得
+    Route::get('/', [ItemController::class, 'index']);
+    // 商品新規登録
+    Route::post('/store', [ItemController::class, 'store']);
+});

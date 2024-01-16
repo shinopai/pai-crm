@@ -2,7 +2,7 @@
     <div class="table-wrap">
       <div class="table__header flex">
         <h2>商品一覧</h2>
-        <RouterLink to="/create">商品登録</RouterLink>
+        <RouterLink :to="{ name: 'item-create' }">商品登録</RouterLink>
       </div>
     <table class="table" v-if="isItemsExists">
       <tr>
