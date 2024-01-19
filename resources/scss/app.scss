@@ -248,3 +248,19 @@
     text-decoration: underline;
   }
 }
+
+/* フラッシュメッセージ */
+.flash-msg {
+  &--success {
+    background-color: #dff0d8;
+    font-size: 1.4rem;
+    padding: 1em;
+    color: #4b8352;
+  }
+}
+
+/* バリデーションエラーメッセージ */
+.err-msg {
+  color: #ff4000;
+  font-size: 12px;
+}

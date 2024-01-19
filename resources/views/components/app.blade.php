@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
   <!-- Scripts -->
   @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
@@ -25,6 +28,13 @@
       {{ $slot }}
     </div>
   </main>
+
+  <script>
+    $(function(){
+      // 5秒後にフラッシュメッセージを消す
+      $('#flash_msg_success').fadeOut(5000);
+    })
+  </script>
 </body>
 
 </html>

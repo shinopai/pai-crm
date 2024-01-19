@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
@@ -24,9 +25,12 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
-        //
+        Item::create([
+            'name' => $request->name,
+            'price' => $request->price
+        ]);
     }
 
     /**

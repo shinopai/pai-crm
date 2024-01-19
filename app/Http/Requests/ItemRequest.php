@@ -27,4 +27,18 @@ class ItemRequest extends FormRequest
             'status' => 'required'
         ];
     }
+
+    /**
+     * カラム名
+     *
+     * @return array カラム名
+     */
+    public function attributes()
+    {
+        return [
+            'name' => '商品名',
+            'price' => '値段',
+            'status' => '販売状況'
+        ];
+    }
 }

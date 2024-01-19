@@ -15,7 +15,7 @@
         <td>{{ item.name }}</td>
         <td>{{ item.price.toLocaleString() }}</td>
         <td>{{ item.status }}</td>
-        <td>{{ dayjs(item.created_at).format('YYYY年M月DD日') }}</td>
+        <td>{{ dayjs(item.created_at).format('YYYY年MM月DD日') }}</td>
       </tr>
     </table>
     <p v-else>商品はありません</p>
