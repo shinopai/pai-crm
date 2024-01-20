@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::latest()->paginate(20);
+        $items = Item::orderBy('id', 'desc')->paginate(20);
 
         return response()->json([
             'status' => true,
@@ -36,9 +36,13 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function getItem(Item $id)
     {
-        //
+        $item = Item::find($id);
+
+        return response()->json([
+            'item' => $item
+        ]);
     }
 
     /**

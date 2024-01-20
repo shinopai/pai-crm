@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ItemIndex from "../Component/Item/Index.vue";
 import ItemCreate from "../Component/Item/Create.vue";
+import ItemShow from "../Component/Item/Show.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
             path: "/items/create",
             name: "item-create",
             component: ItemCreate,
+        },
+        {
+            path: "/items/:id/show",
+            name: "item-show",
+            component: ItemShow,
         },
     ],
 });

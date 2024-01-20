@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { ref, onMounted, inject } from 'vue'
+  import { ref } from 'vue'
   import axios from 'axios';
   import { useRouter } from 'vue-router'
 

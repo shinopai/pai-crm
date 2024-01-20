@@ -10,12 +10,18 @@
         <td class="heading">値段</td>
         <td class="heading">状態</td>
         <td class="heading">登録日</td>
+        <td class="heading"></td>
       </tr>
       <tr v-for="item in items" :key="item">
-        <td>{{ item.name }}</td>
+        <td>
+          <RouterLink :to="{ name: 'item-show', params: { id: item.id } }">{{ item.name }}</RouterLink>
+        </td>
         <td>{{ item.price.toLocaleString() }}</td>
         <td>{{ item.status }}</td>
         <td>{{ dayjs(item.created_at).format('YYYY年MM月DD日') }}</td>
+        <td>
+          <RouterLink :to="{ name: 'item-show', params: { id: item.id } }" class="btn">詳細</RouterLink>
+        </td>
       </tr>
     </table>
     <p v-else>商品はありません</p>

@@ -25,4 +25,6 @@ Route::prefix('items')->group(function () {
     Route::get('/', [ItemController::class, 'index']);
     // 商品新規登録
     Route::post('/store', [ItemController::class, 'store']);
+    // 商品詳細情報取得
+    Route::get('/item/{id}', [ItemController::class, 'getItem']);
 });
