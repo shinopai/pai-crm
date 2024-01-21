@@ -27,4 +27,6 @@ Route::prefix('items')->group(function () {
     Route::post('/store', [ItemController::class, 'store']);
     // 商品詳細情報取得
     Route::get('/item/{id}', [ItemController::class, 'getItem']);
+    // 商品詳細情報更新
+    Route::patch('/item/{id}/update', [ItemController::class, 'updateItem']);
 });

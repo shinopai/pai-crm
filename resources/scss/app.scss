@@ -212,6 +212,35 @@
   td {
     font-size: 1.6rem;
     padding: 0.5em 0;
+    &[colspan="2"] {
+      div {
+        &.flex {
+          column-gap: 15px;
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+  &__btn {
+    color: #fff;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    @include centering;
+    &:hover {
+      opacity: 0.8;
+    }
+    &.edit {
+      background-color: #a435f0;
+    }
+    &.delete {
+      background-color: #ff4000;
+    }
+    &.back {
+      background-color: #4c4e4d;
+    }
   }
 }
 
@@ -275,6 +304,13 @@
         opacity: 0.8;
       }
     }
+  }
+  &__select {
+    font-size: 1.6rem;
+    height: 35px;
+  }
+  &__label {
+    font-size: 1.4rem;
   }
   &__link {
     font-size: 1.4rem;

@@ -22,9 +22,9 @@
 <tr>
 <td colspan="2">
   <div class="flex">
-    <a href="">編集</a>
-    <a href="">削除</a>
-    <a href="">戻る</a>
+    <RouterLink :to="{ name: 'item-edit', params: { id : item.id } }" class="detail-table__btn edit">編集</RouterLink>
+    <a href="" class="detail-table__btn delete">削除</a>
+    <RouterLink :to="{ name: 'item-index' }" class="detail-table__btn back">戻る</RouterLink>
   </div>
 </td>
 </tr>
