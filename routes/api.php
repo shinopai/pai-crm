@@ -24,9 +24,11 @@ Route::prefix('items')->group(function () {
     // 全商品情報取得
     Route::get('/', [ItemController::class, 'index']);
     // 商品新規登録
-    Route::post('/store', [ItemController::class, 'store']);
+    Route::post('/store', [ItemController::class, 'storeItem']);
     // 商品詳細情報取得
     Route::get('/item/{id}', [ItemController::class, 'getItem']);
     // 商品詳細情報更新
     Route::patch('/item/{id}/update', [ItemController::class, 'updateItem']);
+    // 商品削除
+    Route::delete('/item/{id}/destroy', [ItemController::class, 'destroyItem']);
 });

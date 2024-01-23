@@ -25,7 +25,7 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ItemRequest $request)
+    public function storeItem(ItemRequest $request)
     {
         Item::create([
             'name' => $request->name,
@@ -60,8 +60,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroyItem(Item $id)
     {
-        //
+        $item = Item::find($id);
+
+        $item[0]->delete();
     }
 }

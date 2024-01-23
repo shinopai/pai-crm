@@ -23,7 +23,7 @@
 <td colspan="2">
   <div class="flex">
     <RouterLink :to="{ name: 'item-edit', params: { id : item.id } }" class="detail-table__btn edit">編集</RouterLink>
-    <a href="" class="detail-table__btn delete">削除</a>
+    <button class="detail-table__btn destroy" @click="destroyItem">削除</button>
     <RouterLink :to="{ name: 'item-index' }" class="detail-table__btn back">戻る</RouterLink>
   </div>
 </td>
@@ -35,12 +35,13 @@
 <script>
   import { ref, onMounted } from 'vue'
   import axios from 'axios';
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
 
   export default{
     setup(){
       const item = ref([])
       const route = useRoute()
+      const router = useRouter()
       const paramsId = route.params.id
       let isItemExists = ref(false)
 
@@ -49,11 +50,23 @@
         await axios.get('/api/items/item/' + paramsId)
               .then(res => {
                 item.value = res.data.item[0]
-                console.log(item.value)
               })
               .catch(e => {
                 console.log(e.response.data.message)
               })
+      }
+
+      // 商品を削除
+      const destroyItem = async () => {
+        if(confirm('本当に削除して宜しいですか？この操作は元に戻せません。')){
+          await axios.delete('/api/items/item/' + paramsId + '/destroy')
+          .then( res => {
+            router.push({ name: 'item-index' })
+          })
+          .catch( e => {
+              console.log(e.response.data.message)
+          })
+        }
       }
 
   // 商品が存在しているかチェック
@@ -70,7 +83,8 @@
 
     return {
       item,
-      isItemExists
+      isItemExists,
+      destroyItem
     }
     }
   }

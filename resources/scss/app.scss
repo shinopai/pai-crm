@@ -235,8 +235,10 @@
     &.edit {
       background-color: #a435f0;
     }
-    &.delete {
+    &.destroy {
       background-color: #ff4000;
+      border: none;
+      cursor: pointer;
     }
     &.back {
       background-color: #4c4e4d;

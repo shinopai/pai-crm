@@ -59,7 +59,6 @@
                 if(errors.value.price){
                   isPriceErrorExists.value = true
               }
-            console.log(errors)
           })
   }
   return {
