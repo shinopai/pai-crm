@@ -256,7 +256,8 @@
   li {
     border: 1px solid #b0c4df;
     padding: 0.1em 0.5em;
-    &.active {
+    cursor: pointer;
+    &.current {
       background-color: #b0c4df;
       color: #fff;
     }

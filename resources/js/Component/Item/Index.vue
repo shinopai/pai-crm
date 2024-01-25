@@ -27,8 +27,8 @@
     <p v-else>商品はありません</p>
     <nav>
     <ul class="pagination flex" v-if="isItemsExists">
-      <li v-for="link in pageLinks" :key="link" :class="{ 'active' : link.active }">
-        <a :href="link.url">{{ link.label }}</a>
+      <li v-for="link in pageLinks" :key="link" :class="{ 'current' : link.active }" @click="clickPage(link.url)">
+        {{ link.label }}
       </li>
     </ul>
   </nav>
@@ -48,8 +48,11 @@
   let isItemsExists = ref(false)
 
   // 全ての商品情報を取得
-  const getAllItems = async () => {
-    await axios.get('/api/items/')
+  const getAllItems = async (q) => {
+    if(q == undefined){
+      q = ''
+    }
+    await axios.get('/api/items/' + q)
           .then(res => {
             items.value = res.data.items.data
             pageLinks.value = res.data.items.links
@@ -72,13 +75,20 @@
     isItemsExists.value = await checkIsItemsExists()
   })
 
+  // ページャークリックで商品データを再取得
+  const clickPage = (url) => {
+    let res = new URL(url)
+    getAllItems(res.search)
+  }
+
   return {
     getAllItems,
     checkIsItemsExists,
     isItemsExists,
     items,
     pageLinks,
-    dayjs
+    dayjs,
+    clickPage
   }
 }
   }
