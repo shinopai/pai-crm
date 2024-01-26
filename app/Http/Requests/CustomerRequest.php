@@ -25,7 +25,7 @@ class CustomerRequest extends FormRequest
             'name' => 'required|string|max:50',
             'tel' => 'required|numeric|digits_between:8,11|unique:customers',
             'email' => 'required|email:filter,dns|unique:customers',
-            'postcode' => 'required|string|regex:/^d{3}-d{4}$/',
+            'postcode' => 'required|string|regex:/^d{3}d{4}$/',
             'address' => 'required|string|max:255',
             'birthday' => 'required|date',
             'gender' => 'required',
