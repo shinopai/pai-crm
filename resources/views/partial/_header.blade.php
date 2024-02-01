@@ -7,7 +7,7 @@
         </h1>
       </a>
       <nav class="flex">
-        <a href="">顧客一覧</a>
+        <a href="{{ route('customers.index') }}">顧客一覧</a>
         <a href="{{ route('items.index') }}">商品一覧</a>
         <a href="">購入履歴</a>
         <span>

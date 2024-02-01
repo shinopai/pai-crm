@@ -1,15 +1,5 @@
-<x-welcome>
-  <!-- ページタイトル -->
-  <x-slot name="title">ウエルカムページ</x-slot>
+<x-app>
+  <x-slot name="title">商品一覧</x-slot>
 
-  <!-- ページコンテンツ -->
-  <div class="root-btns flex">
-    @if (Route::has('login'))
-    <a href="{{ route('login') }}" class="root-btns__btn login">ログイン</a>
-    @endif
-
-    @if (Route::has('register'))
-    <a href="{{ route('register') }}" class="root-btns__btn register">新規登録</a>
-    @endif
-  </div>
-</x-welcome>
+  <div id="crm_app"></div>
+</x-app>

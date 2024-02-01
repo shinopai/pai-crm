@@ -13,7 +13,7 @@ class IndexController extends Controller
         if(Auth::check()) {
             return redirect('dashboard');
         } else {
-            return view('index');
+            return view('welcome');
         }
     }
 }

@@ -30,11 +30,23 @@ Route::middleware('auth')->group(function () {
 Route::prefix('items')->name('items.')->group(function () {
     // 一覧画面
     Route::get('/', function () {
-        return view('items.index');
+        return view('index');
     })->name('index');
     // 一覧画面以外
     Route::get('/{any}', function () {
-        return view('items.index');
+        return view('index');
+    })->where('any', '.*');
+})->middleware('auth');
+
+// 顧客
+Route::prefix('customers')->name('customers.')->group(function () {
+    // 一覧画面
+    Route::get('/', function () {
+        return view('index');
+    })->name('index');
+    // 一覧画面以外
+    Route::get('/{any}', function () {
+        return view('index');
     })->where('any', '.*');
 })->middleware('auth');
 

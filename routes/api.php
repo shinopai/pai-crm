@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,18 @@ Route::prefix('items')->group(function () {
     Route::patch('/item/{id}/update', [ItemController::class, 'updateItem']);
     // 商品削除
     Route::delete('/item/{id}/destroy', [ItemController::class, 'destroyItem']);
+});
+
+// 顧客
+Route::prefix('customers')->group(function () {
+    // 全顧客情報取得
+    Route::get('/', [CustomerController::class, 'index']);
+    // 顧客新規登録
+    Route::post('/store', [CustomerController::class, 'storeCustomer']);
+    // 顧客詳細情報取得
+    Route::get('/customer/{id}', [CustomerController::class, 'getCustomer']);
+    // 顧客詳細情報更新
+    Route::patch('/customer/{id}/update', [CustomerController::class, 'updateCustomer']);
+    // 顧客削除
+    Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
 });

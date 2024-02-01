@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 // ロケールのインポート
 import "dayjs/locale/ja";
 // routerのインポート
-import router from "./router";
+import router from "./router/";
 
 // ロケール設定
 dayjs.locale("ja");
@@ -25,4 +25,4 @@ const app = createApp(App);
 // dayjsをprovideに設定する
 app.provide("dayjs", dayjs);
 
-app.use(router).mount("#crm_item");
+app.use(router).mount("#crm_app");
