@@ -4,34 +4,36 @@
         <h2>顧客一覧</h2>
         <RouterLink :to="{ name: 'customer-create' }">顧客登録</RouterLink>
       </div>
-    <table class="table" v-if="isCustomersExists">
-      <tr>
-        <td class="heading">顧客名</td>
-        <td class="heading">電話番号</td>
-        <td class="heading">メールアドレス</td>
-        <td class="heading">郵便番号</td>
-        <td class="heading">住所</td>
-        <td class="heading">生年月日</td>
-        <td class="heading">性別</td>
-        <td class="heading">備考</td>
-        <td class="heading"></td>
-      </tr>
-      <tr v-for="customer in customers" :key="customer">
-        <td>
-          <RouterLink :to="{ name: 'customer-show', params: { id: customer.id } }">{{ customer.name }}</RouterLink>
-        </td>
-        <td>{{ customer.tel }}</td>
-        <td>{{ customer.email }}</td>
-        <td>{{ customer.postcode }}</td>
-        <td>{{ customer.address }}</td>
-        <td>{{ dayjs(customer.birthday).format('YYYY年MM月DD日') }}</td>
-        <td>{{ customer.gender }}</td>
-        <td>{{ customer.memo }}</td>
-        <td>
-          <RouterLink :to="{ name: 'customer-show', params: { id: customer.id } }" class="btn">詳細</RouterLink>
-        </td>
-      </tr>
-    </table>
+    <div class="table-area" v-if="isCustomersExists">
+      <table class="table">
+        <tr>
+          <td class="heading">顧客名</td>
+          <td class="heading">電話番号</td>
+          <td class="heading">メールアドレス</td>
+          <td class="heading">郵便番号</td>
+          <td class="heading">住所</td>
+          <td class="heading">生年月日</td>
+          <td class="heading">性別</td>
+          <td class="heading">備考</td>
+          <td class="heading"></td>
+        </tr>
+        <tr v-for="customer in customers" :key="customer">
+          <td>
+            <RouterLink :to="{ name: 'customer-show', params: { id: customer.id } }">{{ customer.name }}</RouterLink>
+          </td>
+          <td>{{ customer.tel }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.postcode }}</td>
+          <td>{{ customer.address }}</td>
+          <td>{{ dayjs(customer.birthday).format('YYYY年MM月DD日') }}</td>
+          <td>{{ customer.gender }}</td>
+          <td>{{ customer.memo }}</td>
+          <td>
+            <RouterLink :to="{ name: 'customer-show', params: { id: customer.id } }" class="btn">詳細</RouterLink>
+          </td>
+        </tr>
+      </table>
+    </div>
     <p v-else>顧客はありません</p>
     <nav>
     <ul class="pagination flex" v-if="isCustomersExists">
