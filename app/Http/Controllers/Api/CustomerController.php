@@ -18,4 +18,18 @@ class CustomerController extends Controller
             'customers' => $customers
         ]);
     }
+
+    public function searchCustomer(Request $request)
+    {
+        $search_word = $request->search_word;
+
+        $q = Customer::query();
+
+        // 顧客名と電話番号で検索
+        $customers = $q->where('name', 'LIKE', '%' . $search_word . '%')->orWhere('tel', 'LIKE', '%' . $search_word . '%')->paginate(20);
+
+        return response()->json([
+            'customers' => $customers
+        ]);
+    }
 }

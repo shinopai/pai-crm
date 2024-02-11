@@ -265,6 +265,10 @@
     &.current {
       background-color: #b0c4df;
       color: #fff;
+      pointer-events: none;
+    }
+    &.disabled {
+      display: none;
     }
   }
 }
@@ -342,4 +346,25 @@
 .err-msg {
   color: #ff4000;
   font-size: 12px;
+}
+
+/* 検索 */
+.search-area {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  input {
+    &[type="text"] {
+      padding: 0.1em 0.5em;
+    }
+    &[type="button"] {
+      width: 35px;
+      @include set-border(1px, solid, #333);
+      border-radius: 5px;
+      background: url("../../public/img/ico01.webp") no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer;
+    }
+  }
 }

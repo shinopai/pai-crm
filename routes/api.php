@@ -41,9 +41,11 @@ Route::prefix('customers')->group(function () {
     // 顧客新規登録
     Route::post('/store', [CustomerController::class, 'storeCustomer']);
     // 顧客詳細情報取得
-    Route::get('/customer/{id}', [CustomerController::class, 'getCustomer']);
-    // 顧客詳細情報更新
-    Route::patch('/customer/{id}/update', [CustomerController::class, 'updateCustomer']);
-    // 顧客削除
-    Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
+    // Route::get('/customer/{id}', [CustomerController::class, 'getCustomer']);
+    // // 顧客詳細情報更新
+    // Route::patch('/customer/{id}/update', [CustomerController::class, 'updateCustomer']);
+    // // 顧客削除
+    // Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
+    // 顧客検索
+    Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
 });

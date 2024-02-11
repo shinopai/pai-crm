@@ -29,7 +29,7 @@
     <p v-else>商品はありません</p>
     <nav>
     <ul class="pagination flex" v-if="isItemsExists">
-      <li v-for="link in pageLinks" :key="link" :class="{ 'current' : link.active }" @click="clickPage(link.url)">
+      <li v-for="link in pageLinks" :key="link" :class="{ 'current' : link.active, 'disabled' : link.url == null }" @click="clickPage(link.url)">
         {{ link.label }}
       </li>
     </ul>

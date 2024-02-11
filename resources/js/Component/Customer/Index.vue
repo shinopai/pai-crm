@@ -4,6 +4,10 @@
         <h2>顧客一覧</h2>
         <RouterLink :to="{ name: 'customer-create' }">顧客登録</RouterLink>
       </div>
+      <div class="search-area">
+        <input type="text" placeholder="顧客名 or 電話番号" v-model="searchWord">
+        <input type="button" @click="searchCustomer(q, searchWord)">
+      </div>
     <div class="table-area" v-if="isCustomersExists">
       <table class="table">
         <tr>
@@ -37,7 +41,7 @@
     <p v-else>顧客はありません</p>
     <nav>
     <ul class="pagination flex" v-if="isCustomersExists">
-      <li v-for="link in pageLinks" :key="link" :class="{ 'current' : link.active }" @click="clickPage(link.url)">
+      <li v-for="link in pageLinks" :key="link" :class="{ 'current' : link.active, 'disabled' : link.url == null }" @click="clickPage(link.url)">
         {{ link.label }}
       </li>
     </ul>
@@ -48,6 +52,7 @@
 <script>
   import { ref, onMounted, inject } from 'vue'
   import axios from 'axios';
+  import { useRoute, useRouter } from 'vue-router'
 
   export default{
   setup(){
@@ -55,7 +60,10 @@
   const customers = ref()
   const pageLinks = ref()
   const dayjs = inject('dayjs')
+  const router = useRouter()
   let isCustomersExists = ref(false)
+  let searchWord = ref()
+  let isSearched = ref(false)
 
   // 全ての顧客情報を取得
   const getAllCustomers = async (q) => {
@@ -80,15 +88,47 @@
     }
   }
 
+  // 顧客検索
+  const searchCustomer = async (q, search_word) => {
+    if(q == undefined){
+      q = ''
+    }
+    if(!searchWord.value){
+      alert('顧客名か電話番号を入力してください')
+      isSearched.value = false
+      return false;
+    }else{
+      isSearched.value = true
+    }
+    await axios.get('/api/customers/customer/search/' + q, {
+      params: {
+        search_word: search_word
+      }
+    })
+      .then(res => {
+       customers.value = res.data.customers.data
+       pageLinks.value = res.data.customers.links
+       isCustomersExists.value = checkIsCustomersExists()
+       console.log(res.data.customers.data)
+      })
+      .catch(e => {
+        console.log(e.response.data.message)
+      })
+  }
+
   onMounted(async () => {
     await getAllCustomers()
     isCustomersExists.value = await checkIsCustomersExists()
   })
 
-  // ページャークリックで商品データを再取得
+  // ページャークリックで顧客データを再取得
   const clickPage = (url) => {
     let res = new URL(url)
-    getAllCustomers(res.search)
+    if(isSearched.value){
+      searchCustomer(res.search, searchWord.value)
+    }else{
+      getAllCustomers(res.search)
+    }
   }
 
   return {
@@ -98,7 +138,9 @@
     customers,
     pageLinks,
     dayjs,
-    clickPage
+    clickPage,
+    searchWord,
+    searchCustomer
   }
 }
   }
