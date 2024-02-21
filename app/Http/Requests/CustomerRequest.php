@@ -25,11 +25,30 @@ class CustomerRequest extends FormRequest
             'name' => 'required|string|max:50',
             'tel' => 'required|numeric|digits_between:8,11|unique:customers',
             'email' => 'required|email:filter,dns|unique:customers',
-            'postcode' => 'required|string|regex:/^d{3}d{4}$/',
+            'postcode' => 'required|string|regex:/^[0-9]{7}$/',
             'address' => 'required|string|max:255',
-            'birthday' => 'required|date',
+            'birthday' => 'required|date|before:today',
             'gender' => 'required',
             'memo' => 'max:255'
+        ];
+    }
+
+    /**
+     * カラム名
+     *
+     * @return array カラム名
+     */
+    public function attributes()
+    {
+        return [
+            'name' => '顧客名',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'postcode' => '郵便番号',
+            'address' => '住所',
+            'birthday' => '生年月日',
+            'gender' => '性別',
+            'memo' => 'メモ'
         ];
     }
 }

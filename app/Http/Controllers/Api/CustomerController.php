@@ -32,4 +32,18 @@ class CustomerController extends Controller
             'customers' => $customers
         ]);
     }
+
+    public function storeCustomer(CustomerRequest $request)
+    {
+        Customer::create([
+            'name' => $request->name,
+            'tel' => $request->tel,
+            'email' => $request->email,
+            'postcode' => $request->postcode,
+            'address' => $request->address,
+            'birthday' => $request->birthday,
+            'gender' => $request->gender,
+            'memo' => $request->memo
+        ]);
+    }
 }
