@@ -16,6 +16,8 @@ class CustomerItem extends Model
      */
     protected $fillable = [
         'quantity',
-        'purchase_datetime'
+        'purchase_datetime',
+        'customer_id',
+        'item_id'
     ];
 }

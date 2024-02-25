@@ -14,14 +14,14 @@ return new class () extends Migration {
             $table->id();
             $table->integer('quantity')->unsigned()->comment('購入数量');
             $table->dateTime('purchase_datetime')->comment('購入日時');
-            $table->timestamps();
-
             $table->foreignId('customer_id')
                             ->constrained()
                             ->onDelete('cascade');
             $table->foreignId('item_id')
                             ->constrained()
                             ->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 
