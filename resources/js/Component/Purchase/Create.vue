@@ -27,7 +27,6 @@
     <div class="form__item">
       <label class="form__label" for="customer_id">購入顧客</label><br>
       <select v-model="customerId" id="customer_id" class="form__select">
-        <option disabled selected value>選択してください</option>
         <option v-for="customer in customers" :value="customer.id" :key="customer">{{ customer.name }}</option>
     </select>
         <p class="err-msg" v-if="isCustomerIdErrorExists">
@@ -87,18 +86,20 @@
 
   // 購入情報を新規登録
   const storePurchase = async () => {
-    await axios.post('/api/purchases/' + customerId.value + '/store', {
+    await axios.post('/api/purchases/store/', {
       quantity: quantity.value,
       purchase_datetime: purchaseDateTime.value,
-      customer_id: customerId.value
+      customer_id: customerId.value,
+      item_id: Number(paramsId)
     })
           .then(res => {
             router.push({ name: 'purchase-index' })
           })
           .catch(e => {
+            console.log(e.response.data)
             errors.value = e.response.data.errors
             isQuantityErrorExists.value = false
-            ispurchaseDateTimeErrorExists.value = false
+            isPurchaseDateTimeErrorExists.value = false
             isCustomerIdErrorExists.value = false
               // 購入数関連のエラーの存在チェック
               if(errors.value.quantity){

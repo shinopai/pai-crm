@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Item;
 
 class Customer extends Model
 {
@@ -24,4 +25,14 @@ class Customer extends Model
         'gender',
         'memo'
     ];
+
+    /**
+     * relation
+     */
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, 'customer_items')
+        ->withPivot('quantity', 'purchase_datetime')
+        ->withTimestamps();
+    }
 }

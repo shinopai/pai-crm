@@ -23,7 +23,20 @@ class CustomerItemRequest extends FormRequest
     {
         return [
             'quantity' => 'required',
-            'purchase_datetime' => 'required'
+            'purchase_datetime' => 'required|before:today'
+        ];
+    }
+
+    /**
+     * カラム名
+     *
+     * @return array カラム名
+     */
+    public function attributes()
+    {
+        return [
+            'quantity' => '購入数',
+            'purchase_datetime' => '購入日時'
         ];
     }
 }
