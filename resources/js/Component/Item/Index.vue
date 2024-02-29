@@ -20,8 +20,9 @@
           <td>{{ item.price.toLocaleString() }}</td>
           <td>{{ item.status }}</td>
           <td>{{ dayjs(item.created_at).format('YYYY年MM月DD日') }}</td>
-          <td>
-            <RouterLink :to="{ name: 'item-show', params: { id: item.id } }" class="btn">詳細</RouterLink>
+          <td class="flex">
+            <RouterLink :to="{ name: 'item-show', params: { id: item.id } }" class="btn show">詳細</RouterLink>
+            <RouterLink :to="{ name: 'purchase-create', params: { item_id: item.id } }" class="btn purchase" v-if="item.status == '販売中'">購入</RouterLink>
           </td>
         </tr>
       </table>
@@ -58,7 +59,6 @@
           .then(res => {
             items.value = res.data.items.data
             pageLinks.value = res.data.items.links
-            console.log(pageLinks.value)
           })
           .catch(e => {
             console.log(e.response.data.message)

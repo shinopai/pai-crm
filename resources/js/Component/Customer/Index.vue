@@ -109,7 +109,6 @@
        customers.value = res.data.customers.data
        pageLinks.value = res.data.customers.links
        isCustomersExists.value = checkIsCustomersExists()
-       console.log(res.data.customers.data)
       })
       .catch(e => {
         console.log(e.response.data.message)

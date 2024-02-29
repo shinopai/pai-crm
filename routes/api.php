@@ -38,6 +38,8 @@ Route::prefix('items')->group(function () {
 Route::prefix('customers')->group(function () {
     // 全顧客情報取得
     Route::get('/', [CustomerController::class, 'index']);
+    // 全顧客情報取得(idと名前のみ)
+    Route::get('/partial', [CustomerController::class, 'getPartialCustomers']);
     // 顧客新規登録
     Route::post('/store', [CustomerController::class, 'storeCustomer']);
     // 顧客詳細情報取得
@@ -48,4 +50,20 @@ Route::prefix('customers')->group(function () {
     // Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
     // 顧客検索
     Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
+});
+
+// 購買
+Route::prefix('purchases')->group(function () {
+    // 全購買情報取得
+    Route::get('/', [PurchaseController::class, 'index']);
+    // 購買情報新規登録
+    Route::post('/store', [PurchaseController::class, 'storePurchase']);
+    // 顧客詳細情報取得
+    // Route::get('/purchase/{id}', [purchaseController::class, 'getpurchase']);
+    // // 顧客詳細情報更新
+    // Route::patch('/purchase/{id}/update', [purchaseController::class, 'updatepurchase']);
+    // // 顧客削除
+    // Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
+    // 顧客検索
+    // Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
 });

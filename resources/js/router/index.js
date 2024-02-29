@@ -7,6 +7,8 @@ import CustomerIndex from "../Component/Customer/Index.vue";
 import CustomerCreate from "../Component/Customer/Create.vue";
 import CustomerShow from "../Component/Customer/Show.vue";
 import CustomerEdit from "../Component/Customer/Edit.vue";
+import PurchaseIndex from "../Component/Purchase/Index.vue";
+import PurchaseCreate from "../Component/Purchase/Create.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,16 @@ const router = createRouter({
             path: "/customers/:id/edit",
             name: "customer-edit",
             component: CustomerEdit,
+        },
+        {
+            path: "/purchases/",
+            name: "purchase-index",
+            component: PurchaseIndex,
+        },
+        {
+            path: "/purchases/:item_id/create",
+            name: "purchase-create",
+            component: PurchaseCreate,
         },
     ],
 });

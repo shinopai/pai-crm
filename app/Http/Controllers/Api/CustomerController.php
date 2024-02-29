@@ -19,6 +19,16 @@ class CustomerController extends Controller
         ]);
     }
 
+    public function getPartialCustomers()
+    {
+        $customers = Customer::select('id', 'name')->get();
+
+        return response()->json([
+            'status' => true,
+            'customers' => $customers
+        ]);
+    }
+
     public function searchCustomer(Request $request)
     {
         $search_word = $request->search_word;
