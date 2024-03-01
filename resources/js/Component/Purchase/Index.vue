@@ -24,8 +24,8 @@
             {{ dayjs(purchase.purchase_datetime).format('YYYY年MM月DD日 H時m分s秒') }}
           </td>
           <td class="flex">
-            <!-- <RouterLink :to="{ name: 'purchase-show', params: { id: purchase.id } }" class="btn show">詳細</RouterLink>
-            <RouterLink :to="{ name: 'purchase-create', params: { purchase_id: purchase.id } }" class="btn purchase" v-if="purchase.status == '販売中'">購入</RouterLink> -->
+            <RouterLink :to="{ name: 'purchase-show', params: { id: purchase.id } }" class="btn show">詳細</RouterLink>
+            <!-- <RouterLink :to="{ name: 'purchase-create', params: { purchase_id: purchase.id } }" class="btn purchase" v-if="purchase.status == '販売中'">購入</RouterLink> -->
           </td>
         </tr>
       </table>

@@ -59,8 +59,8 @@ Route::prefix('purchases')->group(function () {
     Route::get('/', [PurchaseController::class, 'index']);
     // 購買情報新規登録
     Route::post('/store', [PurchaseController::class, 'storePurchase']);
-    // 顧客詳細情報取得
-    // Route::get('/purchase/{id}', [purchaseController::class, 'getpurchase']);
+    // 購買詳細情報取得
+    Route::get('/purchase/{purchase}', [PurchaseController::class, 'getPurchase']);
     // // 顧客詳細情報更新
     // Route::patch('/purchase/{id}/update', [purchaseController::class, 'updatepurchase']);
     // // 顧客削除
