@@ -25,8 +25,6 @@ class Item extends Model
      */
     public function customers()
     {
-        return $this->belongsToMany(Customer::class, 'customer_items')
-        ->withPivot('quantity', 'purchase_datetime')
-        ->withTimestamps();
+        return $this->belongsToMany(Customer::class, 'customer_items')->withTimestamps();
     }
 }

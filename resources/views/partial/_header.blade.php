@@ -9,7 +9,7 @@
       <nav class="flex">
         <a href="{{ route('customers.index') }}">顧客一覧</a>
         <a href="{{ route('items.index') }}">商品一覧</a>
-        <a href="">購入履歴</a>
+        <a href="{{ route('purchases.index') }}">購入履歴</a>
         <span>
           {{ Auth::user()->name }}
         </span>

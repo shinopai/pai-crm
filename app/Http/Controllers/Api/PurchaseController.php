@@ -11,6 +11,30 @@ use App\Http\Requests\CustomerItemRequest;
 
 class PurchaseController extends Controller
 {
+    public function index()
+    {
+        $purchases = CustomerItem::orderBy('id', 'desc')->paginate(20);
+        $customers = array();
+        $items = array();
+
+        // 購入履歴テーブルに紐づいている顧客情報を取得
+        foreach ($purchases as $purchase) {
+            array_push($customers, Customer::find($purchase->customer_id, ['id', 'name']));
+        }
+
+        // 購入履歴テーブルに紐づいている商品情報を取得
+        foreach ($purchases as $purchase) {
+            array_push($items, Item::find($purchase->item_id, ['id', 'name', 'price']));
+        }
+
+        return response()->json([
+            'status' => true,
+            'purchases' => $purchases,
+            'customers' => $customers,
+            'items' => $items
+        ]);
+    }
+
     public function storePurchase(CustomerItemRequest $request)
     {
         $item = Item::find($request->item_id);

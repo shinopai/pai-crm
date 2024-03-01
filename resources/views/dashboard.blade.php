@@ -42,7 +42,16 @@
     <div class="dsbd-menus__item">
       <h2>購入履歴</h2>
       <ul>
-        <li></li>
+        @if($purchases->isNotEmpty())
+        @foreach ($purchases as $purchase)
+        <li>{{ \App\Models\Customer::find($purchase->customer_id)->name }}/&nbsp;{{ \App\Models\Item::find($purchase->item_id)->name }}</li>
+        @endforeach
+        <li>
+          <a href="{{ url('/purchases') }}">一覧ページへ</a>
+        </li>
+        @else
+        <li>履歴はありません</li>
+        @endisset
       </ul>
     </div>
   </div>

@@ -50,4 +50,16 @@ Route::prefix('customers')->name('customers.')->group(function () {
     })->where('any', '.*');
 })->middleware('auth');
 
+// 購買
+Route::prefix('purchases')->name('purchases.')->group(function () {
+    // 一覧画面
+    Route::get('/', function () {
+        return view('index');
+    })->name('index');
+    // 一覧画面以外
+    Route::get('/{any}', function () {
+        return view('index');
+    })->where('any', '.*');
+})->middleware('auth');
+
 require __DIR__ . '/auth.php';
