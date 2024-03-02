@@ -61,10 +61,6 @@ Route::prefix('purchases')->group(function () {
     Route::post('/store', [PurchaseController::class, 'storePurchase']);
     // 購買詳細情報取得
     Route::get('/purchase/{purchase}', [PurchaseController::class, 'getPurchase']);
-    // // 顧客詳細情報更新
-    // Route::patch('/purchase/{id}/update', [purchaseController::class, 'updatepurchase']);
-    // // 顧客削除
-    // Route::delete('/customer/{id}/destroy', [CustomerController::class, 'destroyCustomer']);
-    // 顧客検索
-    // Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
+    // 顧客詳細情報更新
+    Route::patch('/purchase/{purchase}/update', [purchaseController::class, 'updatepurchase']);
 });

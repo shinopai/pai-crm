@@ -1,6 +1,6 @@
 <template>
 <div class="form-wrap" v-if="isPurchaseExists">
-  <h2 class="form__heading">「item.name」購買情報編集</h2>
+  <h2 class="form__heading">「{{ item.name }}」購買情報編集</h2>
   <dl class="form__def">
     <dt>値段:</dt>
     <dd>{{ item.price }}</dd>
@@ -25,13 +25,10 @@
         </p>
     </div>
     <div class="form__item">
-      <label class="form__label" for="customer_id">購入顧客</label><br>
-      <select v-model="customerId" id="customer_id" class="form__select">
-        <option v-for="customer in customers" :value="customer.id" :key="customer">{{ customer.name }}</option>
-    </select>
-        <p class="err-msg" v-if="isCustomerIdErrorExists">
-          {{ errors['customer_id'][0] }}
-        </p>
+      <dl>
+        <dt>購入者</dt>
+        <dd>{{ customer.name }}</dd>
+      </dl>
     </div>
     <div class="form__item">
       <input type="button" value="更新" class="form__input--button" @click="updatePurchase">
@@ -61,7 +58,6 @@
       let errors = ref([])
       let isQuantityErrorExists = ref(false)
       let isPurchaseDateTimeErrorExists = ref(false)
-      let isCustomerIdErrorExists = ref(false)
       let quantity = ref()
       let purchaseDateTime = ref()
 
@@ -79,27 +75,28 @@
               })
       }
 
-      // 商品情報を更新
+      // 購買情報を更新
       const updatePurchase = async () => {
         await axios.patch('/api/purchases/purchase/' + paramsId + '/update', {
-          name: item.value.name,
-          price: item.value.price,
-          status: item.value.status
+          quantity: quantity.value,
+          purchase_datetime: purchaseDateTime.value,
+          customer_id: customer.value.id,
+          item_id: item.value.id
         })
         .then( res => {
-          router.push({ name: 'item-show', params: { id: paramsId } })
+          router.push({ name: 'purchase-show', params: { id: paramsId } })
         })
         .catch( e => {
           errors.value = e.response.data.errors
-          isNameErrorExists.value = false
-          isPriceErrorExists.value = false
-            // 商品名関連のエラーの存在チェック
-            if(errors.value.name){
-                isNameErrorExists.value = true
+          isQuantityErrorExists.value = false
+          isPurchaseDateTimeErrorExists.value = false
+            // 購入数関連のエラーの存在チェック
+            if(errors.value.quantity){
+                isQuantityErrorExists.value = true
             }
-            // 値段関連のエラーの存在チェック
-            if(errors.value.price){
-              isPriceErrorExists.value = true
+            // 購入日時関連のエラーの存在チェック
+            if(errors.value.purchase_datetime){
+              isPurchaseDateTimeErrorExists.value = true
           }
         })
       }
@@ -150,8 +147,7 @@
       errors,
       updatePurchase,
       isQuantityErrorExists,
-      isPurchaseDateTimeErrorExists,
-      isCustomerIdErrorExists
+      isPurchaseDateTimeErrorExists
     }
     }
   }

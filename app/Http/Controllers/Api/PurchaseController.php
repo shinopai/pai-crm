@@ -51,12 +51,24 @@ class PurchaseController extends Controller
     public function getPurchase(CustomerItem $purchase)
     {
         $customer = Customer::find($purchase->customer_id, ['id', 'name']);
-        $item = Item::find($purchase->item_id, ['name', 'price']);
+        $item = Item::find($purchase->item_id, ['id', 'name', 'price']);
 
         return response()->json([
             'purchase' => $purchase,
             'customer' => $customer,
             'item' => $item
         ]);
+    }
+
+    public function updatePurchase(CustomerItemRequest $request, CustomerItem $purchase)
+    {
+        $customer = Customer::find($request->customer_id);
+        $customer->items()->updateExistingPivot(
+            $request->item_id,
+            [
+                'quantity' => $request->quantity,
+                'purchase_datetime' => $request->purchase_datetime,
+            ]
+        );
     }
 }
