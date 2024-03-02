@@ -34,9 +34,9 @@
 <tr>
 <td colspan="2">
   <div class="flex">
-    <!-- <RouterLink :to="{ name: 'purchase-edit', params: { id : purchase.id } }" class="detail-table__btn edit">編集</RouterLink>
-    <button class="detail-table__btn destroy" @click="destroypurchase">削除</button>
-    <RouterLink :to="{ name: 'purchase-index' }" class="detail-table__btn back">戻る</RouterLink> -->
+    <RouterLink :to="{ name: 'purchase-edit', params: { id : purchase.id } }" class="detail-table__btn edit">編集</RouterLink>
+    <!-- <button class="detail-table__btn destroy" @click="destroypurchase">削除</button> -->
+    <RouterLink :to="{ name: 'purchase-index' }" class="detail-table__btn back">戻る</RouterLink>
   </div>
 </td>
 </tr>

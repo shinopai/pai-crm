@@ -5,10 +5,10 @@ import ItemShow from "../Component/Item/Show.vue";
 import ItemEdit from "../Component/Item/Edit.vue";
 import CustomerIndex from "../Component/Customer/Index.vue";
 import CustomerCreate from "../Component/Customer/Create.vue";
-import CustomerEdit from "../Component/Customer/Edit.vue";
 import PurchaseIndex from "../Component/Purchase/Index.vue";
 import PurchaseCreate from "../Component/Purchase/Create.vue";
 import PurchaseShow from "../Component/Purchase/Show.vue";
+import PurchaseEdit from "../Component/Purchase/Edit.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,11 +44,6 @@ const router = createRouter({
             component: CustomerCreate,
         },
         {
-            path: "/customers/:id/edit",
-            name: "customer-edit",
-            component: CustomerEdit,
-        },
-        {
             path: "/purchases/",
             name: "purchase-index",
             component: PurchaseIndex,
@@ -62,6 +57,11 @@ const router = createRouter({
             path: "/purchases/:item_id/create",
             name: "purchase-create",
             component: PurchaseCreate,
+        },
+        {
+            path: "/purchases/:id/edit",
+            name: "purchase-edit",
+            component: PurchaseEdit,
         },
     ],
 });

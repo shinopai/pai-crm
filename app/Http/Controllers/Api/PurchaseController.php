@@ -50,7 +50,7 @@ class PurchaseController extends Controller
 
     public function getPurchase(CustomerItem $purchase)
     {
-        $customer = Customer::find($purchase->customer_id, ['name']);
+        $customer = Customer::find($purchase->customer_id, ['id', 'name']);
         $item = Item::find($purchase->item_id, ['name', 'price']);
 
         return response()->json([
